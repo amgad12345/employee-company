@@ -1,33 +1,30 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import Page from './pages/Page'
-import Page2 from './pages/Page2'
+import Employee from './pages/Employee'
+import AddEmployees from './pages/AddEmployees'
 import HomePage from './pages/HomePage'
 import NotFound from './pages/NotFound'
 
-const App = () => {
+const App = props => {
   return (
     <Router>
       <header>
-        <h1>Welcome to my SPA</h1>
-        <nav>
-          <ul>
+        <h1 className="title">Top Employees</h1>
+        <nav className = "navbar">
+          <ul className="links">
             <li>
-              <Link to="/">Go Home</Link>
-            </li>
-            <li>
-              <Link to="/1">Page 1</Link>
-            </li>
-            <li>
-              <Link to="/2">Page 2</Link>
+              <Link className="first" to="/">Go Home</Link>
+             </li>
+             <li>
+              <Link className="second"to="/Employees/Add">Add Employee</Link>
             </li>
           </ul>
         </nav>
       </header>
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/1" component={Page}></Route>
-        <Route exact path="/2" component={Page2}></Route>
+        <Route exact path="/Employee/:id" component={Employee}></Route>
+        <Route exact path="/Employees/Add" component={AddEmployees}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>
